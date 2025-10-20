@@ -139,5 +139,5 @@ This project is licensed under the MIT License.
 Authors
 -------
 
-`data_streamer` was written by `Suraj Goel <goel.suraj5@gmail.com>`_  
+`data_streamer` was written by Suraj Goel _  
 with design and implementation assistance from OpenAI’s ChatGPT (GPT-5 model).
