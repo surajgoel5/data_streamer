@@ -8,6 +8,7 @@ class Server:
     def __init__(self, 
                  ctrl_obj,                     # control object with callable methods
                  data_getter_name: str = "get_data",  # method name in ctrl_obj used for streaming
+                 ip_address= "0.0.0.0",
                  ctrl_port: int = 42069, 
                  data_port: int = 42096,
                  ctrl_rcv_timeout: int = 1000,  # ms
@@ -17,8 +18,9 @@ class Server:
         self.data_getter_name = data_getter_name
         self.ctrl_port = ctrl_port
         self.data_port = data_port
-        self.ctrl_addr = f"tcp://*:{self.ctrl_port}"
-        self.data_addr = f"tcp://*:{self.data_port}"
+        self.ip_address=ip_address
+        self.ctrl_addr = f"tcp://{ip_address}:{self.ctrl_port}"
+        self.data_addr = f"tcp://{ip_address}:{self.data_port}"
         self.ctrl_rcv_timeout = ctrl_rcv_timeout
         self.target_publish_rate_hz = target_publish_rate_hz
         

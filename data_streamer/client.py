@@ -7,7 +7,7 @@ from collections import deque
 
 class Client:
     def __init__(self,
-                 ip: str = "localhost",
+                 ip_address: str = "localhost",
                  ctrl_port: int = 42069,
                  data_port: int = 42096,
                  subscribe: bool = True,
@@ -32,8 +32,8 @@ class Client:
         buffer_size : int
             Number of most recent data frames to keep in memory.
         """
-        self.ctrl_addr = f"tcp://{ip}:{ctrl_port}"
-        self.data_addr = f"tcp://{ip}:{data_port}"
+        self.ctrl_addr = f"tcp://{ip_address}:{ctrl_port}"
+        self.data_addr = f"tcp://{ip_address}:{data_port}"
 
         self.ctx = zmq.Context.instance()
         self.req = self.ctx.socket(zmq.REQ)
