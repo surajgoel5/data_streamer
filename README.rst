@@ -16,7 +16,7 @@ To install, run this command in your terminal:
 
 .. code-block:: bash
 
-   pip install git+https://github.com/BBQuantum/data_streamer.git
+   pip install git+https://github.com/surajgoel5/data_streamer.git
 
 From sources
 ------------
@@ -25,13 +25,13 @@ You can either clone the public repository:
 
 .. code-block:: bash
 
-   git clone git://github.com/BBQuantum/data_streamer
+   git clone git://github.com/surajgoel5/data_streamer
 
 Or download the tarball:
 
 .. code-block:: bash
 
-   curl -OJL https://github.com/BBQuantum/data_streamer/tarball/master
+   curl -OJL https://github.com/surajgoel5/data_streamer/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
