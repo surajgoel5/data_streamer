@@ -89,7 +89,7 @@ class Client:
             return self.decompress_func(raw, hdr)
         # Default: direct reconstruction
         if hdr["dtype"]=='pickle':
-            return pickle.load(raw)
+            return pickle.loads(raw)
         else:
             dtype = np.dtype(hdr["dtype"])
             shape = tuple(hdr["shape"])

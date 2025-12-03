@@ -172,7 +172,7 @@ class Server:
                         "shape": 'lmao nope',
                     }
                     self.pub.send_json(hdr, flags=zmq.SNDMORE)
-                    self.pub.send(pickle.dump(data))
+                    self.pub.send(pickle.dumps(data))
                     seq += 1  
                 elif isinstance(data, np.ndarray):
                     hdr = {
