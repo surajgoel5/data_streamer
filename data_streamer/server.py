@@ -174,7 +174,7 @@ class Server:
                     self.pub.send_json(hdr, flags=zmq.SNDMORE)
                     self.pub.send(pickle.dump(data))
                     seq += 1  
-                else if isinstance(data, np.ndarray):
+                elif isinstance(data, np.ndarray):
                     hdr = {
                         "seq": seq,
                         "timestamp": time.time(),
