@@ -4,6 +4,7 @@ import numpy as np
 import threading
 import time
 from collections import deque
+import pickle
 
 class Client:
     def __init__(self,
@@ -82,14 +83,17 @@ class Client:
             return {"status": "error", "error": str(e)}
 
     # ----------------------------------------------------------------------
-    def _decode_data(self, raw: bytes, hdr: dict) -> np.ndarray:
+    def _decode_data(self, raw: bytes, hdr: dict):
         """Decode or decompress bytes into a NumPy array."""
         if self.decompress_func:
             return self.decompress_func(raw, hdr)
         # Default: direct reconstruction
-        dtype = np.dtype(hdr["dtype"])
-        shape = tuple(hdr["shape"])
-        return np.frombuffer(raw, dtype=dtype).reshape(shape)
+        if hdr["dtype"]=='pickle':
+            return pickle.load(raw)
+        else:
+            dtype = np.dtype(hdr["dtype"])
+            shape = tuple(hdr["shape"])
+            return np.frombuffer(raw, dtype=dtype).reshape(shape)
 
     # ----------------------------------------------------------------------
     def _recv_loop(self):

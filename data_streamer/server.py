@@ -3,6 +3,7 @@ import json
 import numpy as np
 import zmq
 from datetime import datetime
+import pickle
 
 class Server:
     def __init__(self, 
@@ -163,7 +164,17 @@ class Server:
                     continue
 
                 # Publish header + binary data
-                if isinstance(data, np.ndarray):
+                if isinstance(data, tuple):
+                    hdr = {
+                        "seq": seq,
+                        "timestamp": time.time(),
+                        "dtype": 'pickle',
+                        "shape": 'lmao nope',
+                    }
+                    self.pub.send_json(hdr, flags=zmq.SNDMORE)
+                    self.pub.send(pickle.dump(data))
+                    seq += 1  
+                else if isinstance(data, np.ndarray):
                     hdr = {
                         "seq": seq,
                         "timestamp": time.time(),
