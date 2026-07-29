@@ -188,8 +188,8 @@ class Server:
                     print(f"[Server] Warning: data_getter returned non-numpy type: {type(data)}")
                 t1 = time.time()
                 # Control publish rate
-                if self.target_publish_rate_hz < 1.0/(t1-t0+1e-10):
-                    time.sleep( (1.0 / self.target_publish_rate_hz) - 1.0/(t1-t0+1e-10))
+                if 1.0/self.target_publish_rate_hz > (t1-t0+1e-10):
+                    time.sleep( (1.0 / self.target_publish_rate_hz) - (t1-t0+1e-10))
 
         except KeyboardInterrupt:
             print("[Server] Interrupted by user.")
